@@ -15,9 +15,8 @@ hc keyunbind --all
 
 # Rofi (alternative to D-menu)
 #hc keybind $Mod-Shift-d spawn rofi -rnow
-hc keybind $Mod-Shift-d spawn dmenu_run -i -fn -*-terminus-medium-*-*-*-13-*-*-*-*-*-*-* -nb '#1e1e1e' -nf '#888888' -sb 'red' -sf '#1e1e1e' 
-hc keybind $Mod4-a spawn rofi -now
-#-show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+hc keybind $Mod-Shift-d spawn dmenu_run_hlwm -i -fn -*-terminus-medium-*-*-*-13-*-*-*-*-*-*-* -nb '#1e1e1e' -nf '#888888' -sb 'red' -sf '#1e1e1e' 
+#hc keybind $Mod-a spawn rofi -now -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
 
 # keybindings
