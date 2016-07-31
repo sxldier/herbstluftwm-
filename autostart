@@ -8,16 +8,11 @@ hc() {
 
 hc emit_hook reload
 
-xsetroot -solid '#5A8E3A'
+xsetroot -solid '#273238'
+#feh --bg-scale ~/Pictures/3d_rendering_girl_face_art_102437_2560x1080.jpg
 
 # remove all existing keybindings
 hc keyunbind --all
-
-# Rofi (alternative to D-menu)
-#hc keybind $Mod-Shift-d spawn rofi -rnow
-hc keybind $Mod-Shift-d spawn dmenu_run_hlwm -i -fn -*-terminus-medium-*-*-*-13-*-*-*-*-*-*-* -nb '#1e1e1e' -nf '#888888' -sb 'red' -sf '#1e1e1e' 
-#hc keybind $Mod-a spawn rofi -now -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
-
 
 # keybindings
 # if you have a super key you will be much happier with Mod set to Mod4
@@ -33,6 +28,12 @@ hc keybind $Mod-Return spawn ${TERMINAL:-terminator} # use your $TERMINAL with x
 hc keybind $Mod-F2 spawn xbacklight -dec 5
 hc keybind $Mod-F3 spawn xbacklight -inc 5
 
+# Dmenu or Rofi
+#hc keybind $Mod-Shift-d spawn dmenu_run_hlwm -i -fn -*-terminus-medium-*-*-*-13-*-*-*-*-*-*-* -nb '#1e1e1e' -nf '#888888' -sb 'red' -sf '#1e1e1e' 
+#hc keybind $Mod-a spawn rofi -now -show run -lines 3 -eh 2 -width 2560 -padding 100 -opacity "85" -bw 0 -bc "#333333" -bg "#333333" -fg "#273278" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 10"
+hc keybind $Mod-a spawn rofi -now -show run -bg "#273238" -fg "#273238" 
+
+# My Keybindings
 
 
 # basic movement
@@ -171,6 +172,7 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc unlock
 
 herbstclient set tree_style '╾│ ├└╼─┐'
+
 
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0
