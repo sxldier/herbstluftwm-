@@ -77,7 +77,11 @@ hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags (Workspace Names)
 tag_names=(" " " " " " " " " " " " " " " " " " " ")
+#tag_names=("Web"."Term","Work","Notes","Social","Misc.")
+#tag_names=( {1..9} )
+#tag_names=("h","e","r","b","s")  #Try With No Comma#
 tag_keys=( {1..9} 0 )
+
 
 hc rename default "${tag_names[0]}" || true
 for i in ${!tag_names[@]} ; do
@@ -168,6 +172,22 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
+# Custom Layouts
+#hc add  
+#hc load  '
+hc load   '
+(clients vertical:0 0x1200003 0x1a00003 0x1600003)
+'
+hc load  '
+(split horizontal:0.700000:1 (clients vertical:0 0x1800001) (clients vertical:0 0x2000003))
+'
+
+hc rule class=Terminator floating=on
+hc rule class=Terminator tag=  index=1
+hc rule class=chromium tag=
+
+
+
 # unlock, just to be sure
 hc unlock
 
@@ -186,3 +206,4 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     "$panel" $monitor &
 done
+
