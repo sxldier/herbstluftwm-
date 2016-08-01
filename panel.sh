@@ -13,9 +13,8 @@ y=${geometry[1]}
 panel_width=${geometry[2]}
 panel_height=16
 font="-*-fixed-medium-*-*-*-12-*-*-*-*-*-*-*"
-#font3="-*-freesans-medium-*-normal-*-12-*-*-*-*-*-*-*"
-font2="-misc-monofur-medium-*-*-*-12-*-*-*-*-*-*-*"
-font3="-misc-fontawesome-medium-r-normal--0-0-0-12-p-0-iso10646-1"
+#font2="-misc-monofur-medium-*-*-*-12-*-*-*-*-*-*-*"
+#font3="-misc-fontawesome-medium-r-normal--0-0-0-12-p-0-iso10646-1"
 bgcolor=$(hc get frame_border_normal_color)
 selbg=$(hc get window_border_active_color)
 selfg='#101010'
@@ -111,8 +110,7 @@ hc pad $monitor $panel_height
                 echo -n "^ca(1,\"${herbstclient_command[@]:-herbstclient}\" "
                 echo -n "focus_monitor \"$monitor\" && "
                 echo -n "\"${herbstclient_command[@]:-herbstclient}\" "
-                #echo -n "use \"${i:1}\") ${i:1} ^ca()"
-		echo -n "use \"${i:1}\") ^fn(FontAwesome:size=9)${i:1}^fn() ^ca()"
+                echo -n "use \"${i:1}\") ${i:1} ^ca()"
             else
                 # non-clickable tags if using older dzen
                 echo -n " ${i:1} "

@@ -76,8 +76,8 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags (Workspace Names)
-tag_names=(" " " " " " " " " " " " " " " " " " " ")
-#tag_names=("Web"."Term","Work","Notes","Social","Misc.")
+tag_names=('Web' 'Term' 'Work' 'Notes' 'Social' 'Misc')
+#tag_names=(" " " " " " " " " " " " " " " " " " " ")
 #tag_names=( {1..9} )
 #tag_names=("h","e","r","b","s")  #Try With No Comma#
 tag_keys=( {1..9} 0 )
@@ -175,18 +175,30 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 # Custom Layouts
 #hc add  
 #hc load  '
-hc load   '
-(clients vertical:0 0x1200003 0x1a00003 0x1600003)
+hc load Term  '
+(clients vertical:2 0x800003 0x2800003 0x2c00003)
 '
-hc load  '
-(split horizontal:0.700000:1 (clients vertical:0 0x1800001) (clients vertical:0 0x2000003))
+hc load Web '
+(split horizontal:0.700000:1 (clients vertical:0 0x1600002) (clients vertical:0 0x3000003))
+'
+hc load Work '
+(split horizontal:0.500000:0 (clients vertical:0 0x4000001) (clients vertical:0 0x4800003))
 '
 
 hc rule class=Terminator floating=on
-hc rule class=Terminator tag=  index=1
-hc rule class=chromium tag=
+hc rule class=Terminator tag=Term
+hc rule class=chromium tag=Web
+hc rule class=Keepnote tag=Notes index=1
+hc rule class=Atom tag=Work index=1
+hc rule class=Sublime_text tag=Work
+hc rule class=Hexchat tag=Social
+hc rule class=Vmware tag=Misc
+hc rule class=Telegram tag=Social
+#hc spawn keepnote
 
 
+#The Tag Names
+#            
 
 # unlock, just to be sure
 hc unlock
