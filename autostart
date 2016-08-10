@@ -31,10 +31,8 @@ hc keybind $Mod-F3 spawn xbacklight -inc 5
 # Dmenu or Rofi
 #hc keybind $Mod-Shift-d spawn dmenu_run_hlwm -i -fn -*-terminus-medium-*-*-*-13-*-*-*-*-*-*-* -nb '#1e1e1e' -nf '#888888' -sb 'red' -sf '#1e1e1e' 
 #hc keybind $Mod-a spawn rofi -now -show run -lines 3 -eh 2 -width 2560 -padding 100 -opacity "85" -bw 0 -bc "#333333" -bg "#333333" -fg "#273278" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 10"
-hc keybind $Mod-a spawn rofi -now -show run -bg "#273238" -fg "#273238" 
-
-# My Keybindings
-
+hc keybind $Mod-a spawn rofi -now -show run -bg "#273238" -fg "#273238" -width 2560 -padding 400 -opacity "85"  
+hc spawn compton
 
 # basic movement
 # focusing clients
@@ -146,8 +144,8 @@ hc attr theme.normal.color '#454545'
 hc attr theme.urgent.color '#900000'
 hc attr theme.inner_width 1
 hc attr theme.inner_color black
-hc attr theme.border_width 3
-hc attr theme.floating.border_width 4
+hc attr theme.border_width 2
+hc attr theme.floating.border_width 3
 hc attr theme.floating.outer_width 1
 hc attr theme.floating.outer_color black
 hc attr theme.active.inner_color '#3E4A00'
@@ -156,7 +154,7 @@ hc attr theme.background_color '#141414'
 
 hc set window_gap 4
 hc set frame_padding 0
-hc set smart_window_surroundings 1
+hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0
 hc set focus_follows_mouse 1
@@ -173,14 +171,12 @@ hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 # Custom Layouts
-#hc add  
-#hc load  '
-hc load Term  '
-(split horizontal:0.200000:1 (clients vertical:0 0xa00003) (split horizontal:0.750000:0 (clients vertical:0 0x1200003) (clients vertical:0 0x1600003)))
-'
-hc load Web '
-(split horizontal:0.700000:1 (clients vertical:0 0x1600002) (clients vertical:0 0x3000003))
-'
+#hc load Term  '
+#(split horizontal:0.200000:1 (clients vertical:0 0x3000003) (split vertical:0.500000:0 (split horizontal:0.500000:0 (clients vertical:0 0x2c00003) (clients vertical:0 0x1e00003)) (clients vertical:0 0x1800003)))
+#'
+hc load Web 
+#(split horizontal:0.800000:0 (clients vertical:0 0x1400002) (clients vertical:0))
+#'
 hc load Work '
 (split horizontal:0.500000:0 (clients vertical:0 0x4000001) (clients vertical:0 0x4800003))
 '
@@ -195,7 +191,31 @@ hc rule class=Hexchat tag=Social
 hc rule class=Vmware tag=Misc
 hc rule class=Telegram tag=Social
 #hc spawn keepnote
+#hc spawn terminator
+#hc spawn terminator
+#hc spawn terminator
+#hc spawn terminator
 
+
+#Load Terminals
+targetTag="Term"
+spawnInterval=0.2
+hc add $targetTag
+hc use $targetTag
+hc lock
+hc chain , split right 0.2 , focus -e right \
+    , split right 0.75 \
+    , split bottom 0.5 , focus -e down , set_layout horizontal
+
+hc and , rule tag=$targetTag index=0 once , spawn terminator
+sleep $spawnInterval
+hc and , rule tag=$targetTag index=10 once , spawn terminator
+sleep $spawnInterval
+hc and , rule tag=$targetTag index=11 once , spawn terminator
+sleep $spawnInterval
+hc and , rule tag=$targetTag index=100 once , spawn terminator
+hc use_previous
+hc unlock
 
 #The Tag Names
 #            
@@ -207,7 +227,8 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 
 
 # do multi monitor setup here, e.g.:
-# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+#hc set_monitors 1280x1280+0+0 #1280x1024+1280+0
+#hc set_monitors 3440x1440+0+0
 # or simply:
 # hc detect_monitors
 
